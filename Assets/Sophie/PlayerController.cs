@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection;
     public float moveSpeed = 2;
     public float maxForwardSpeed = 8;
+    public float turnSpeed = 100;
     float desiredSpeed;
     float forwardSpeed;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
+        float turnAmount = direction.x;
         float fDirection = direction.y;
         if (direction.sqrMagnitude > 1f)
             direction.Normalize();
@@ -40,7 +42,9 @@ public class PlayerController : MonoBehaviour
 
         forwardSpeed = Mathf.MoveTowards(forwardSpeed, desiredSpeed, acceleration * Time.deltaTime);
         anim.SetFloat("ForwardSpeed", forwardSpeed);
-        
+
+
+        transform.Rotate(0, turnAmount *turnSpeed * Time.deltaTime, 0);
         //direction = direction * moveSpeed * Time.deltaTime;
         //transform.Translate(direction.x, 0, direction.y);
     }
