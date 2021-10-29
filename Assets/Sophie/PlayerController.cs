@@ -7,17 +7,23 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveDirection;
+    float jumpDirection;
     public float moveSpeed = 2;
     public float maxForwardSpeed = 8;
     public float turnSpeed = 100;
     float desiredSpeed;
     float forwardSpeed;
+    [SerializeField] float jumpSpeed = 3000;
 
     const float groundAccel = 5;
     const float groundDecel = 25;
-
+    bool readyJump = false;
+    bool onGround = true;
 
     Animator anim;
+    Rigidbody rb;
+
+    
 
     bool IsMoveInput
     {
@@ -28,6 +34,11 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = context.ReadValue<Vector2>();
         // Debug.Log(moveDirection); // D+1 , W+1 , S -1 , A -1
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jumpDirection = context.ReadValue<float>();
     }
 
     void Move(Vector2 direction)
@@ -48,14 +59,74 @@ public class PlayerController : MonoBehaviour
         //direction = direction * moveSpeed * Time.deltaTime;
         //transform.Translate(direction.x, 0, direction.y);
     }
+
+
+    
+    void Jump(float direction)
+    {
+        Debug.Log(direction);
+        if (direction > 0 && onGround)
+        {
+            anim.SetBool("ReadyJump", true);
+            readyJump = true;
+            
+        }
+        else if (readyJump)
+        {
+            anim.SetBool("Launch", true);
+            readyJump = false;
+            anim.SetBool("ReadyJump", false);
+
+        }
+
+    }
+
+    public void Launch()
+    {
+        rb.AddForce(0, jumpSpeed, 0);
+        anim.SetBool("Launch", false);
+        anim.applyRootMotion = false;
+    }
+
+    public void Land()
+    {
+        anim.SetBool("Land", false);
+        anim.applyRootMotion = true;
+        anim.SetBool("Launch", false);
+    }
+
+
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
     }
+
+    [SerializeField] float groundRayDist = 2.7f;
 
     // Update is called once per frame
     void Update()
     {
         Move(moveDirection);
+        Jump(jumpDirection);
+
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + Vector3.up * groundRayDist * 0.5f, -Vector3.up);
+        Debug.DrawRay(transform.position + Vector3.up * groundRayDist * 0.5f, -Vector3.up * groundRayDist, Color.red);
+
+        if (Physics.Raycast(ray, out hit, groundRayDist))
+        {
+            if (!onGround)
+            {
+                onGround = true;
+                anim.SetBool("Land", true);
+            }
+        }
+        else
+        {
+            onGround = false;
+        }
     }
+
+
 }

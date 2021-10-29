@@ -1,42 +1,12 @@
 fileFormatVersion: 2
-guid: d43cf7da04679504d856ff3cf99bc3d9
+guid: 1ffd96d09bfb40743af4a3ad47857967
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1001_Diffuse
-    second: {fileID: 2800000, guid: d062ac15f9464374d8824ed6f46e0ef3, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1001_Glossiness
-    second: {fileID: 2800000, guid: 02ea77047e548ac4898ed9988dabe0ae, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1001_Normal
-    second: {fileID: 2800000, guid: e598e74eae446e74ab10aece622bf37a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1001_Specular
-    second: {fileID: 2800000, guid: fef18aa424f25c5449a639886408526b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1002_Diffuse
-    second: {fileID: 2800000, guid: 20613476581924b45862b0062e3a274d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch02_1002_Normal
-    second: {fileID: 2800000, guid: 214872e3f2c897c49aecf574c30d684d, type: 3}
+    second: jumpReadyIdle
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -63,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: jumpReadyIdle
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 20
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -105,18 +104,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - a510dd37aef8978419c413e951bdc8cd
-  - b4a91aa1d4b172242856c504c05baf6b
-  - c577fbdb09945a84ebbfbb6c246d12bb
-  - 37a8e5c26f782b145829507fb085489c
-  - 59ea806b0e4a0954f8611b9c3d412cd1
-  - 1ffd96d09bfb40743af4a3ad47857967
-  - 036edf81987f26641a01d62f82b34ce3
-  - 74a92dd668adfe045abf1366d7a836b5
-  - dbc4f2e236171c94498440a2341a03f7
-  - 6df0ac935894844489c3486ccb50e7f8
-  - b3de5880d404ee14594b2d3b64c9f4f7
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -910,11 +898,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d43cf7da04679504d856ff3cf99bc3d9, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
